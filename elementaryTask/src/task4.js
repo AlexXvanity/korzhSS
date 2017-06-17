@@ -1,14 +1,12 @@
 function findPalindrom (value) {
-
     var error = {};
 
-    if ( typeof value != 'number' ) {
-        error.status = "failed";
-        error.reason = "Входым параметром должно быть число";
+    if (typeof value != 'number') {
+        error.status = 'failed';
+        error.reason = 'Входым параметром должно быть число';
         console.warn(error);
     } 
     else {
-
         var _value = (typeof value == 'String') ? value : String(value),
             data = _value.split('').map(Number),
             length = data.length,
@@ -17,13 +15,11 @@ function findPalindrom (value) {
             i = 1;
 
         for (; index < length; index ++) {
-
             var current = index,
                 next = index + 1,
                 equality = data[current] === data[next] && (data[current - 1] === data[next + 1]);
 
             if (equality) {
-
                 var n = 1,
                     _index = index + 1,
                     output = [],
@@ -40,7 +36,7 @@ function findPalindrom (value) {
                     };
 
                 output.push(data[index], data [_index]);
-
+                
                 while (itarable()) {
                     output.unshift(data[index - n]);
                     output.push(data[_index + n]);

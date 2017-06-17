@@ -1,5 +1,5 @@
 // Task1
-var res1 = task1(5,5, "*");
+var res1 = task1(5, 5, '*');
 console.log(res1);
 
 //Task2 
@@ -44,8 +44,8 @@ console.log(res4);
 
 //Task5 
 var context = {
-	min : "123456",
-	max : "234567"
+	min : '123456',
+	max : '234567'
 }
 var res5 = task5(context);
 console.log(res5);

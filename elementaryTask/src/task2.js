@@ -1,13 +1,11 @@
-function analizeConverts(envelope1, envelope2) {
-
+function analizeConverts (envelope1, envelope2) {
 	var error = {};
 
 	if (typeof envelope1 != 'object' || typeof envelope2 != 'object') {
-		error.status = "failed";
-		error.reason = "Конверты должны иметь тип object";
+		error.status = 'failed';
+		error.reason = 'Конверты должны иметь тип object';
 		console.warn(error);
 	} else {
-		
 		var w1 = envelope1.a,
 			h1 = envelope1.b,
 			w2 = envelope2.a,
