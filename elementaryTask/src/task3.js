@@ -17,14 +17,12 @@ function sortTriangle (triangles) {
 			i = 0, 
 			j = 0;
 
-		//Calculate Square	
 		for (; i < length; i++) {
 			triangles[i].square = calculateSquare(triangles[i]);
 		}
-		// Sort Triangles 
-		triangles.sort(compareSquare);
 
-		//Generate Result
+		triangles.sort(compareSquare);
+ 
 		for (; j < length; j++) {
 			res.push(triangles[j].vertices);
 		}

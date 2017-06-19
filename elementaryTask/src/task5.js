@@ -36,7 +36,6 @@ function findLuckyTicket(context) {
 					result.winner = 'simpleMethod';
 				} else result.winner = 'complexCounter';
 
-				//SimpleMethod
 				function simpleMethod (num) {
 					var numberStr = String(num),
 						data = numberStr.split('').map(Number),
@@ -57,7 +56,7 @@ function findLuckyTicket(context) {
 
 					return isLucky;
 				}
-				//ComplexMethod
+
 				function complexMethod (num) {
 					var numberStr = String(num);
 						data = numberStr.split('').map(Number),
@@ -78,7 +77,6 @@ function findLuckyTicket(context) {
 					return isLucky;
 				}
 
-				// GeneralResult
 				return result;
 			}
 		}

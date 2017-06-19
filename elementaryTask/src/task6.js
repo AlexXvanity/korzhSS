@@ -11,9 +11,10 @@ function getNumberSequence (length, minSqr) {
 		error.reason = 'Длина и Значение минимального квадрата должны быть > 0';
 		console.warn(error);
 	} else {
-		var str = '';
+		var str = '',
+			i;
 
-		for (var i = 1; i <= length; i++) {
+		for (i = 1; i <= length; i++) {
 			if ( (i * i) < minSqr ) {
 				str = str + i + ',';
 			} else break;
