@@ -5,8 +5,7 @@ function generateChessBoard (width, height, symbol) {
 		error.status = 'failed';
 		error.reason = 'Ширина и Высота дожны быть цифрами';
 		console.warn(error);
-	} else 
-	if (typeof symbol != 'number' && typeof symbol != 'string') {
+	} else if (typeof symbol != 'number' && typeof symbol != 'string') {
 		error.status = 'failed';
 		error.reason = 'Символ может быть числом или строкой';
 		console.warn(error);

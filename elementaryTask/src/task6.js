@@ -5,8 +5,7 @@ function getNumberSequence (length, minSqr) {
 		error.status = 'failed';
 		error.reason = 'Длина и Значение минимального квадрата должны быть типа number';
 		console.warn(error);
-	} else 
-	if ( length < 0 || minSqr < 0 ) {
+	} else if ( length < 0 || minSqr < 0 ) {
 		error.status = 'failed';
 		error.reason = 'Длина и Значение минимального квадрата должны быть > 0';
 		console.warn(error);

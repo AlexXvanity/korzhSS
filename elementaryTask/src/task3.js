@@ -1,12 +1,11 @@
 function sortTriangle (triangles) {
 	var error = {};
 
-	if ( !Array.isArray(triangles) )  {
+	if (!Array.isArray(triangles))  {
 		error.status = 'failed';
 		error.reason = 'Входной параметр должен быть массив';
 		console.warn(error);
-	} else 
-	if (typeof triangles[0] != 'object') {
+	} else if (typeof triangles[0] != 'object') {
 		error.status = 'failed';
 		error.reason = 'Массив треугольников должен содержать объекты';
 		console.warn(error);

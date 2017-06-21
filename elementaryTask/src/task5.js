@@ -5,8 +5,7 @@ function findLuckyTicket(context) {
 		error.status = 'failed';
 		error.reason = 'Входной параметр должен быть объект';
 		console.warn(error);
-	} 
-	else {
+	} else {
 		if ( typeof (context.min && context.max) != 'string' ) {
 			error.status = 'failed';
 			error.reason = 'Параметром диапазона должна быть строка';

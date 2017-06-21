@@ -5,8 +5,7 @@ function findFibNumbers (obj) {
 		error.status = 'failed';
 		error.reason = 'Входной параметр должен быть объект';
 		console.warn(error);
-	} else 
-	if (obj.length < 0) {
+	} else if (obj.length < 0) {
 		error.status = 'failed';
 		error.reason = 'Числовой ряд должен состоять из положительных чисел';
 		console.warn(error);
