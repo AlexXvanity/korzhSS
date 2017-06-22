@@ -1,84 +1,102 @@
-function findLuckyTicket(context) {
-	var error = {};
+'use strict';
 
-	if ( typeof context != 'object' ) {
-		error.status = 'failed';
-		error.reason = 'Входной параметр должен быть объект';
-		console.warn(error);
+function task5 (context) {
+	var error = preValidateTask5(context),
+		result;
+
+	if (error === '') {
+		result = findLuckyTicket(context);
 	} else {
-		if ( typeof (context.min && context.max) != 'string' ) {
-			error.status = 'failed';
-			error.reason = 'Параметром диапазона должна быть строка';
-			console.warn(error);
-		} else {
-			if ( context.min.length < 6  || context.max.length < 6 || context.min.length > 6 || context.max.length > 6 ) {
-				error.status = 'failed';
-				error.reason = 'Билет должен содержать шести значное число';
-				console.warn(error);
-			} else {
-				var result = {
-						winner : '',
-						simpleCounter : 0,
-						complexCounter: 0
-					},
-					start = parseInt(context.min),
-					end = parseInt(context.max);
+		result = console.warn({status:'failed', reason: error});
+	}
 
-				for (var i = start; i < end; i ++) {
+	return result;
+}
 
-					if ( simpleMethod(i) ) result.simpleCounter ++;
+function preValidateTask5 (context) {
+	var result = '';
 
-					if ( complexMethod(i) ) result.complexCounter ++;
-				}
+	if (typeof context !== 'object') {
+		result = 'Входной параметр должен быть объект';
+	} else if (typeof(context.min && context.max) !== 'string') {
+		result = 'Параметром диапазона должна быть строка';
+	} else if (context.min.length < 6  || context.max.length < 6 ||
+			   context.min.length > 6 || context.max.length > 6) {
+		result = 'Билет должен содержать шести значное число';
+	}
 
-				if ( result.simpleCounter > result.complexCounter ) {
-					result.winner = 'simpleMethod';
-				} else result.winner = 'complexCounter';
+	return result;
+}
 
-				function simpleMethod (num) {
-					var numberStr = String(num),
-						data = numberStr.split('').map(Number),
-						sumResult = [],
-						isLucky = false;
+function findLuckyTicket(context) {
+	var result = {
+		winner: '',
+		simpleCounter: 0,
+		complexCounter: 0
+	},
+	start = parseInt(context.min),
+	end = parseInt(context.max);
 
-					var totalSum = data.reduce(function (sum, current, index) {
-						if (index % (data.length / 2) === 0) {
-							sumResult.push(sum);
-							sum = 0;
-						}
-						return sum + current;
-					});
+	for (var i = start; i < end; i ++) {
+		if (simpleMethod(i)) {
+			result.simpleCounter ++;
+		}
 
-					sumResult.push(totalSum);
-
-					if (sumResult[0] === sumResult[1]) isLucky = true;
-
-					return isLucky;
-				}
-
-				function complexMethod (num) {
-					var numberStr = String(num);
-						data = numberStr.split('').map(Number),
-						isLucky = false;
-						oddSum = 0, 
-						evenSum = 0;
-
-
-					for (var i = 0; i < data.length; i++) {
-						if (data[i] % 2 === 0) {
-							evenSum += data[i];
-						} else {
-							oddSum += data[i];
-						}
-					}
-					if (evenSum === oddSum) isLucky = true;
-
-					return isLucky;
-				}
-
-				return result;
-			}
+		if (complexMethod(i)) {
+			result.complexCounter ++;
 		}
 	}
+
+	if (result.simpleCounter > result.complexCounter) {
+		result.winner = 'simpleMethod';
+	} else result.winner = 'complexCounter';
+
+	return result;
 }
-var task5 = findLuckyTicket;
+
+function simpleMethod (num) {
+	var numberStr = String(num),
+		numbers = numberStr.split('').map(Number),
+		totalSum = 0,
+		sumResult = [],
+		isLucky = false;
+
+	totalSum = numbers.reduce(function (sum, current, index) {
+		if (index % (numbers.length / 2) === 0) {
+			sumResult.push(sum);
+			sum = 0;
+		}
+		return sum + current;
+	});
+
+	sumResult.push(totalSum);
+
+	if (sumResult[0] === sumResult[1]) {
+		isLucky = true;
+	}
+
+	return isLucky;
+}
+
+function complexMethod (num) {
+	var numberStr = String(num),
+		numbers = numberStr.split('').map(Number),
+		isLucky = false,
+		oddSum = 0,
+		evenSum = 0;
+
+
+	for (var i = 0; i < numbers.length; i++) {
+		if (numbers[i] % 2 === 0) {
+			evenSum += numbers[i];
+		} else {
+			oddSum += numbers[i];
+		}
+	}
+
+	if (evenSum === oddSum) {
+		isLucky = true;
+	}
+
+	return isLucky;
+}

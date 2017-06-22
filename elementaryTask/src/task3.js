@@ -1,64 +1,81 @@
-function sortTriangle (triangles) {
-	var error = {};
+'use strict';
 
-	if (!Array.isArray(triangles))  {
-		error.status = 'failed';
-		error.reason = 'Входной параметр должен быть массив';
-		console.warn(error);
-	} else if (typeof triangles[0] != 'object') {
-		error.status = 'failed';
-		error.reason = 'Массив треугольников должен содержать объекты';
-		console.warn(error);
-	} 
-	else {
-		var length = triangles.length;
-			res = [],
-			i = 0, 
-			j = 0;
+function task3(triangles) {
+	var error = preValidateTask3(triangles),
+		result;
 
-		for (; i < length; i++) {
-			triangles[i].square = calculateSquare(triangles[i]);
-		}
+	if (error === '') {
+		result = sortTriangle(triangles);
+	} else {
+		result = console.warn({status:'failed', reason: error});
+	}
 
-		triangles.sort(compareSquare);
- 
-		for (; j < length; j++) {
-			res.push(triangles[j].vertices);
-		}
+	return result;
+}
 
-		function calculateSquare (triangle) {
-			var a = triangle.a,
-				b = triangle.b,
-				c = triangle.c, 
-				square = 0,
-				p = 0;
+function preValidateTask3 (triangles) {
+	var result = '';
 
-			p = calculatePerimeter(a, b, c);
+	if (!Array.isArray(triangles)) {
+		result = 'Входной параметр должен быть массив';
+	} else if (!triangles.every(isObject)) {
+		result = 'Массив треугольников должен содержать объекты';
+	}
 
-			square = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+	function isObject (item) {
+		var res = false;
 
-			return square;
-		}
-
-		function calculatePerimeter (a, b, c) {
-			var p = 0;
-
-			p = 1 / 2 * (a + b + c);
-
-			return p;
-		}
-
-		function compareSquare (triangleA, triangleB) {
-			return triangleB.square - triangleA.square;
+		if (typeof (item) === 'object') {
+			res = true;
 		}
 
 		return res;
 	}
+
+	return result; 
 }
-var task3 = sortTriangle;
 
+function sortTriangle (triangles) {
+	var length = triangles.length,
+		res = [],
+		i = 0, 
+		j = 0;
 
+	for (; i < length; i++) {
+		triangles[i].square = calculateSquare(triangles[i]);
+	}
 
+	triangles.sort(compareSquare);
 
+	for (; j < length; j++) {
+		res.push(triangles[j].vertices);
+	}
 
+	return res;
+}
 
+function calculateSquare (triangle) {
+	var a = triangle.a,
+		b = triangle.b,
+		c = triangle.c, 
+		square = 0,
+		p = 0;
+
+	p = calculatePerimeter(a, b, c);
+
+	square = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+
+	return square;
+}
+
+function calculatePerimeter (a, b, c) {
+	var p = 0;
+
+	p = 1 / 2 * (a + b + c);
+
+	return p;
+}
+
+function compareSquare (triangleA, triangleB) {
+	return triangleB.square - triangleA.square;
+}

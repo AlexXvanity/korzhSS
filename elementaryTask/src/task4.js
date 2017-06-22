@@ -1,59 +1,86 @@
-function findPalindrom (value) {
-    var error = {};
+'use strict';
 
-    if (typeof value != 'number') {
-        error.status = 'failed';
-        error.reason = 'Входым параметром должно быть число';
-        console.warn(error);
-    } 
-    else {
-        var _value = (typeof value == 'String') ? value : String(value),
-            data = _value.split('').map(Number),
-            length = data.length,
-            result = {},
-            index = 0,
-            i = 1;
+function task4 (number) {
+    var error = preValidateTask4(number),
+        result;
 
-        for (; index < length; index ++) {
-            var current = index,
-                next = index + 1,
-                equality = data[current] === data[next] && (data[current - 1] === data[next + 1]);
-
-            if (equality) {
-                var n = 1,
-                    _index = index + 1,
-                    output = [],
-                    steps = index,
-                    itarable = function () {
-                        var isIterable = false,
-                        _equality = data[index - n] === data[_index + n];
-
-                        if (_equality && steps) isIterable = true;
-
-                        steps--;
-
-                        return isIterable;
-                    };
-
-                output.push(data[index], data [_index]);
-                
-                while (itarable()) {
-                    output.unshift(data[index - n]);
-                    output.push(data[_index + n]);
-
-                    n++;
-                }
-
-                result['palindrom_' + i] = output;
-                i++;
-            }
-        }
-
-        result = Object.keys(result).length ? JSON.stringify(result) : 0;
-
-        return result;
+    if (error === '') {
+        result = findPalindrom(number);
+    } else {
+        result = console.warn({status:'failed', reason: error});
     }
+
+    return result;
 }
 
-var task4 = findPalindrom;
+function preValidateTask4 (number) {
+    var result = '';
+
+    if (typeof number !== 'number') {
+        result = 'Входым параметром должно быть число';
+    } 
+
+    return result;
+}
+
+function findPalindrom (number) {
+    var strNumber = String(number),
+        numbers = strNumber.split('').map(Number),
+        length = numbers.length,
+        result = {},
+        index = 0,
+        i = 1;
+
+    for (; index < length; index ++) {
+        var currentElem = index,
+            next = index + 1,
+            isEqual = (numbers[currentElem] === numbers[next] &&
+                       numbers[currentElem - 1] === numbers[next + 1]);
+
+        if (isEqual) {
+            result['palindrom_' + i] = pushEqualElements(index, numbers);
+            i++;
+        }
+    }
+
+    if (Object.keys(result).length) {
+        result = JSON.stringify(result);
+    } else {
+        result = 0;
+    }
+
+    return result;
+}
+
+function pushEqualElements (index, numbers) {
+    var step = 1,
+        next = index + 1,
+        result = [],
+        currentElem = index,
+        isEqual = findEqualElements;
+
+    result.push(numbers[index], numbers [next]);
+
+    while (isEqual()) {
+        result.unshift(numbers[index - step]);
+        result.push(numbers[next + step]);
+
+        step++;
+    }
+
+    function findEqualElements () {
+        var res = false,
+            isEqual = numbers[index - step] === numbers[next + step];
+
+        if (isEqual && currentElem) {
+            res = true;
+        }
+
+        currentElem --;
+
+        return res;
+    }
+
+    return result;        
+}
 
