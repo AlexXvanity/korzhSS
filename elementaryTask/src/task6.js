@@ -11,7 +11,7 @@ function task6 (length, minSqr) {
 	}
 
 	return result;
-} 
+}
 
 function preValidateTask6 (length, minSqr) {
 	var result = '';
@@ -26,7 +26,7 @@ function preValidateTask6 (length, minSqr) {
 }
 
 function getNumberSequence (length, minSqr) {
-	var str = '',
+	var str = '', 
 		i;
 
 	for (i = 1; i <= length; i ++) {

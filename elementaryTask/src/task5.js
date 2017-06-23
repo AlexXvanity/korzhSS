@@ -2,7 +2,7 @@
 
 function task5 (context) {
 	var error = preValidateTask5(context),
-		result;
+	result;
 
 	if (error === '') {
 		result = findLuckyTicket(context);
@@ -35,9 +35,10 @@ function findLuckyTicket(context) {
 		complexCounter: 0
 	},
 	start = parseInt(context.min),
-	end = parseInt(context.max);
+	end = parseInt(context.max),
+	i;
 
-	for (var i = start; i < end; i ++) {
+	for (i = start; i < end; i ++) {
 		if (simpleMethod(i)) {
 			result.simpleCounter ++;
 		}
@@ -83,10 +84,11 @@ function complexMethod (num) {
 		numbers = numberStr.split('').map(Number),
 		isLucky = false,
 		oddSum = 0,
-		evenSum = 0;
+		evenSum = 0,
+		i;
 
 
-	for (var i = 0; i < numbers.length; i++) {
+	for (i = 0; i < numbers.length; i++) {
 		if (numbers[i] % 2 === 0) {
 			evenSum += numbers[i];
 		} else {

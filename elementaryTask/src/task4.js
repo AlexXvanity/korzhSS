@@ -18,7 +18,7 @@ function preValidateTask4 (number) {
 
     if (typeof number !== 'number') {
         result = 'Входым параметром должно быть число';
-    } 
+    }
 
     return result;
 }
@@ -26,18 +26,17 @@ function preValidateTask4 (number) {
 function findPalindrom (number) {
     var strNumber = String(number),
         numbers = strNumber.split('').map(Number),
-        length = numbers.length,
         result = {},
         index = 0,
-        i = 1;
+        i = 0;
 
-    for (; index < length; index ++) {
+    for (i = 1; index < numbers.length; index ++) {
         var currentElem = index,
             next = index + 1,
-            isEqual = (numbers[currentElem] === numbers[next] &&
-                       numbers[currentElem - 1] === numbers[next + 1]);
+            isNumbersEqual = (numbers[currentElem] === numbers[next] &&
+                  numbers[currentElem - 1] === numbers[next + 1]);
 
-        if (isEqual) {
+        if (isNumbersEqual) {
             result['palindrom_' + i] = pushEqualElements(index, numbers);
             i++;
         }
@@ -57,11 +56,11 @@ function pushEqualElements (index, numbers) {
         next = index + 1,
         result = [],
         currentElem = index,
-        isEqual = findEqualElements;
+        isElementEqual = findEqualElements;
 
     result.push(numbers[index], numbers [next]);
 
-    while (isEqual()) {
+    while (isElementEqual()) {
         result.unshift(numbers[index - step]);
         result.push(numbers[next + step]);
 
@@ -81,6 +80,5 @@ function pushEqualElements (index, numbers) {
         return res;
     }
 
-    return result;        
+    return result;
 }
-

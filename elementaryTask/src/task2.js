@@ -2,7 +2,7 @@
 
 function task2 (envelope1, envelope2) {
 	var error = preValidateTask2(envelope1, envelope2),
-		result;
+	    result;
 
 	if (error === '') {
 		result = analizeConverts(envelope1, envelope2);
@@ -19,13 +19,13 @@ function preValidateTask2 (envelope1, envelope2) {
 	if (typeof envelope1 !== 'object' || typeof envelope2 !== 'object') {
 		result = 'Конверты должны иметь тип object';
 	}
-	
+
 	return result;
 }
 
 function analizeConverts (envelope1, envelope2) {
 	var w1 = envelope1.a,
-		h1 = envelope1.b,
+	    h1 = envelope1.b,
 		w2 = envelope2.a,
 		h2 = envelope2.b,
 		res = 0;
@@ -33,8 +33,8 @@ function analizeConverts (envelope1, envelope2) {
 	envelope1.number = 1;
 	envelope2.number = 2;
 
-	if ( (w1 > w2 && h1 > h2) || (w1 < w2 && h1 < h2) ) {
-		if ( (w1 > w2 && h1 > h2) ) {
+	if ((w1 > w2 && h1 > h2) || (w1 < w2 && h1 < h2)) {
+		if ((w1 > w2 && h1 > h2)) {
 			res = envelope1.number;
 		} else {
 			res = envelope2.number;

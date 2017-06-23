@@ -18,38 +18,25 @@ function preValidateTask3 (triangles) {
 
 	if (!Array.isArray(triangles)) {
 		result = 'Входной параметр должен быть массив';
-	} else if (!triangles.every(isObject)) {
+	} else if (!triangles.every((element) => typeof (element) === 'object')) {
 		result = 'Массив треугольников должен содержать объекты';
 	}
 
-	function isObject (item) {
-		var res = false;
-
-		if (typeof (item) === 'object') {
-			res = true;
-		}
-
-		return res;
-	}
-
-	return result; 
+	return result;
 }
 
 function sortTriangle (triangles) {
-	var length = triangles.length,
-		res = [],
-		i = 0, 
-		j = 0;
+	var res = [];
 
-	for (; i < length; i++) {
-		triangles[i].square = calculateSquare(triangles[i]);
-	}
+	triangles.forEach(function (element) {
+		element.square = calculateSquare(element);
+	});
 
-	triangles.sort(compareSquare);
+	triangles.sort((triangleA, triangleB) => triangleB.square - triangleA.square);
 
-	for (; j < length; j++) {
-		res.push(triangles[j].vertices);
-	}
+	triangles.forEach(function (element) {
+		res.push(element.vertices);
+	});
 
 	return res;
 }
@@ -57,7 +44,7 @@ function sortTriangle (triangles) {
 function calculateSquare (triangle) {
 	var a = triangle.a,
 		b = triangle.b,
-		c = triangle.c, 
+		c = triangle.c,
 		square = 0,
 		p = 0;
 
@@ -74,8 +61,4 @@ function calculatePerimeter (a, b, c) {
 	p = 1 / 2 * (a + b + c);
 
 	return p;
-}
-
-function compareSquare (triangleA, triangleB) {
-	return triangleB.square - triangleA.square;
 }

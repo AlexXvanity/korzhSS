@@ -2,7 +2,7 @@
 
 function task1 (width, height, symbol) {
 	var error = preValidateTask1(width, height, symbol),
-		result;
+	    result;
 
 	if (error === '') {
 		result = generateChessBoard(width, height, symbol);
@@ -27,7 +27,7 @@ function preValidateTask1 (width, height, symbol) {
 
 function generateChessBoard (width, height, symbol) {
 	var realWidth = width * 2 - 1,
-		str = '',
+	    str = '',
 		i,j;
 
 	for (i = 0; i < height; i++) {
