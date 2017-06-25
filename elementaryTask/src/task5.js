@@ -2,7 +2,7 @@
 
 function task5 (context) {
 	var error = preValidateTask5(context),
-	result;
+		result;
 
 	if (error === '') {
 		result = findLuckyTicket(context);
@@ -67,6 +67,7 @@ function simpleMethod (num) {
 			sumResult.push(sum);
 			sum = 0;
 		}
+
 		return sum + current;
 	});
 
@@ -86,7 +87,6 @@ function complexMethod (num) {
 		oddSum = 0,
 		evenSum = 0,
 		i;
-
 
 	for (i = 0; i < numbers.length; i++) {
 		if (numbers[i] % 2 === 0) {

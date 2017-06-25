@@ -26,14 +26,11 @@ function preValidateTask7 (obj) {
 }
 
 function findFibNumbers (obj) {
-	var length = obj.length,
-		i = 3,
-		a = 1,
-		b = 1,
-		c = 0,
+	var a = 1, b = 1,
+		c = 0, i = 0,
 		res = [a, b];
 
-	for (; i <= length; i++) {
+	for (i = 3; i <= obj.length; i++) {
 		c = a + b;
 		res.push(c);
 		a = b;

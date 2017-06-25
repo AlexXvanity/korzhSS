@@ -26,7 +26,8 @@ function preValidateTask4 (number) {
 function findPalindrom (number) {
     var strNumber = String(number),
         numbers = strNumber.split('').map(Number),
-        result = {},
+        palindroms = [],
+        result = 0,
         index = 0,
         i = 0;
 
@@ -37,13 +38,13 @@ function findPalindrom (number) {
                   numbers[currentElem - 1] === numbers[next + 1]);
 
         if (isNumbersEqual) {
-            result['palindrom_' + i] = pushEqualElements(index, numbers);
+            palindroms[i] = pushEqualElements(index, numbers);
             i++;
         }
     }
 
-    if (Object.keys(result).length) {
-        result = JSON.stringify(result);
+    if (palindroms.length) {
+        result = findMaxPalindrom(palindroms);
     } else {
         result = 0;
     }
@@ -81,4 +82,18 @@ function pushEqualElements (index, numbers) {
     }
 
     return result;
+}
+
+function findMaxPalindrom (obj) {
+    var numbers = [],
+        max,
+        key;
+
+    for (key in obj) {
+        numbers.push(Number(obj[key].join('')));
+    }
+
+    max = Math.max.apply(null, numbers);
+
+    return max;
 }
