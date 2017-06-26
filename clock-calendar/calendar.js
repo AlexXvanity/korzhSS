@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         generateCalendar();
 
+        setInterval(generateCalendar, 1000);
+
     calendar.addEventListener('click', switchFormat);
 
     function generateCalendar () {

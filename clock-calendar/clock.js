@@ -4,23 +4,16 @@ document.addEventListener('DOMContentLoaded', function () {
     var clock = document.querySelector('.clock'),
         hours = document.querySelector('.hours'),
         minutes = document.querySelector('.minutes'),
-        seconds = document.querySelector('.seconds'),
-        timerFull = 0;
+        seconds = document.querySelector('.seconds');
 
     generateClock();
 
-    setInterval(generateClock, 60000);
+    setInterval(generateClock, 1000);
 
     clock.addEventListener('click', swicthClockFormat);
 
     function swicthClockFormat () {
         this.classList.toggle('short-format');
-        if (this.classList.contains('short-format')) {
-            setInterval(generateClock, 60000);
-            clearInterval(timerFull);
-        } else {
-            timerFull = setInterval(generateClock, 1000);
-        }
     }
 
     function generateClock () {
