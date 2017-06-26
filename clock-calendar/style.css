@@ -61,3 +61,6 @@
 .clock.short-format .clock__elements:last-child {
     display: none;
 }
+.disabled {
+    display: none;
+}
