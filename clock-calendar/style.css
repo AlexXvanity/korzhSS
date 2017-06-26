@@ -1,7 +1,7 @@
 .clock-calendar {
     width: 500px;
     height: 500px;
-    border-radius: 500px;
+    border-radius: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,52 +15,12 @@
     cursor: pointer;
     box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);
     transition: all 0.2s linear;
+    font-size: 80px;
+    color: #000;
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 2px;
 }
 .clock-calendar:hover {
     background-color: #000;
-}
-.clock-calendar:hover .clock__elements,
-.clock-calendar:hover .calendar__elements {
     color: #fff;
-}
-.clock, .calendar {
-    margin-bottom: 30px;
-    cursor: pointer;
-    text-align: center;
-}
-.clock__elements,
-.calendar__elements {
-    padding-right: 20px;
-    display: inline-block;
-    vertical-align: top;
-    font-size: 50px;
-    color: #000;
-    font-family: 'Arial', sans-serif;
-    position: relative;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.75);
-}
-.clock__elements:before,
-.calendar__elements:before  {
-    content: ":";
-    font-size: 50px;
-    font-family: 'Arial', sans-serif;
-    display: block;
-    position: absolute;
-    right: 0px;
-    top: 50%;
-    margin-top: -35px;
-}
-.clock__elements:last-child,
-.calendar__elements:last-child,
-.clock.short-format .clock__elements:nth-child(2) {
-    padding-right: 0px;
-}
-.clock__elements:last-child:before,
-.calendar__elements:last-child:before,
-.clock.short-format .clock__elements:nth-child(2):before,
-.clock.short-format .clock__elements:last-child {
-    display: none;
-}
-.disabled {
-    display: none;
 }
