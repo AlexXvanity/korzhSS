@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
     clockCalendar.addEventListener('mousedown', changeView);
 
     function changeView (event) {
-        debugger;
         if (event.button === 2) {
             if (calendar.classList.contains('disabled')) {
                 calendar.classList.remove('disabled');
