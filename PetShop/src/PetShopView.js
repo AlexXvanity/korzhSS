@@ -10,12 +10,8 @@ class PetShopView {
             let html = `
                 <ul>
                     ${petsList.map(pet => `
-                        <li>
-                            ${pet.name || 'Hamster'}
-                            ${pet.color}
-                            ${pet.price}
-                            ${pet.isFluffy ? 'Fluffy' : 'Not fluffy'}
-                        </li>`).join('\n')}
+                        <li>${pet.name || 'Hamster'} ${pet.color} ${pet.price} ${pet.isFluffy ? 'Fluffy' : 'Not fluffy'}</li>
+                    `).join('\n')}
                 </ul>`;
 
             return html;
