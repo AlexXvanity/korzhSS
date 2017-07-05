@@ -1,0 +1,40 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+.petShop div {
+    cursor: pointer;
+    margin-right: 4%;
+    padding: 20px;
+    width: 30%;
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid #ebebeb;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background: #fafafa;
+    transition: all 0.2s linear;
+    box-shadow: 0px 3px 10px 0px rgba(212, 212, 212, 0.75);
+}
+.petShop div:hover {
+    transform: translate3d(0, -2px, 0);
+    box-shadow: 0px 3px 13px 0px rgba(86, 86, 86, 0.75);
+}
+.petShop div:last-child {
+    margin-right: 0px;
+}
+.petShop div ul {
+    padding: 0px;
+    list-style: none;
+}
+.petShop div ul li {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ebebeb;
+}
+.petShop div ul li:last-child {
+    margin-bottom: 0px;
+}
+.petShop div p {
+    margin: 0px;
+    font-size: 20px;
+    font-weight: 700;
+}

@@ -16,9 +16,9 @@ function init () {
     petShop.addPet(new Hamster('green', 340, true));
     petShop.addPet(new Hamster('blue', 290, false));
 
-    petShopView.render(petShop.getAllCats());
+    petShopView.render(petShop.getAllCats(), 'Cats');
 
-    petShopView.render(petShop.getExpensivePets());
+    petShopView.render(petShop.getExpensivePets(), 'Expensive Pets');
 
-    petShopView.render(petShop.getFluffyOrWhite());
+    petShopView.render(petShop.getFluffyOrWhite(), 'Fluffy or White Color');
 }

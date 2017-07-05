@@ -43,7 +43,7 @@ class PetShop {
         let petsList = [];
 
         this.petsList.forEach((pet)=> {
-            if (pet.color === 'white' || pet.isFluffy) {
+            if (pet.isYourColor('white') || pet.areYouFluffy()) {
                 petsList.push(pet);
             }
         });
