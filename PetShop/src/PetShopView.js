@@ -1,23 +1,24 @@
 class PetShopView {
-    constructor() {
-    }
+    constructor() {}
     render (petsList) {
         let petShop = document.querySelector('.petShop'),
-            tpl = ``,
-            li = ``;
+            tpl = generateTpl(petsList);
 
-        petsList.forEach((pet)=> {
-            li += `
-                <li>
-                    ${pet.name || 'Hamster'}
-                    ${pet.color}
-                    ${pet.price}
-                    ${pet.isFluffy ? 'Fluffy' : 'Not fluffy'}
-                </li>`.trim();
-        });
+        petShop.insertAdjacentHTML('beforeend', tpl);
 
-        tpl = `<ul>${li}</ul>`;
+        function generateTpl (petsList) {
+            let html = `
+                <ul>
+                    ${petsList.map(pet => `
+                        <li>
+                            ${pet.name || 'Hamster'}
+                            ${pet.color}
+                            ${pet.price}
+                            ${pet.isFluffy ? 'Fluffy' : 'Not fluffy'}
+                        </li>`).join('\n')}
+                </ul>`;
 
-        petShop.insertAdjacentHTML('beforebegin', tpl);
+            return html;
+        }
     }
 }
