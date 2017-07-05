@@ -16,7 +16,7 @@ class PetShopView {
                         `</li>`).join('\n')
                     }
                 </ul>`;
-                
+
             return html;
         }
     }
