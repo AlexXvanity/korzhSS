@@ -3,8 +3,8 @@
 document.addEventListener('DOMContentLoaded', init);
 
 function init () {
-    let petShop = new PetShop('PetShop');
-    let petShopView = new PetShopView();
+    let petShop = new PetShop('PetShop'),
+        petShopView = new PetShopView();
 
     petShop.addPet(new Dog('black', 100, 'Strelka'));
     petShop.addPet(new Dog('red', 200, 'Belka'));
