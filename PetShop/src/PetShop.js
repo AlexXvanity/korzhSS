@@ -47,6 +47,7 @@ class PetShop {
                 petsList.push(pet);
             }
         });
+
         return petsList;
     }
 }

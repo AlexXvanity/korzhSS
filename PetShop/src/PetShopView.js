@@ -1,26 +1,23 @@
 class PetShopView {
     constructor() {
     }
-    renderAllCats (catsList) {
+    render (petsList) {
         let petShop = document.querySelector('.petShop'),
-            ul = document.createElement('ul');
+            tpl = ``,
+            li = ``;
 
-        catsList.forEach((cat)=> {
-            let li = document.createElement('li'),
-                str = '';
-
-            str = str + cat.name +' '+ cat.price +' '+ cat.color +' '+ cat.isFluffy;
-
-            li.innerHTML = str;
-
-            ul.appendChild(li);
+        petsList.forEach((pet)=> {
+            li += `
+                <li>
+                    ${pet.name || 'Hamster'}
+                    ${pet.color}
+                    ${pet.price}
+                    ${pet.isFluffy ? 'Fluffy' : 'Not fluffy'}
+                </li>`.trim();
         });
 
-        petShop.appendChild(ul);
+        tpl = `<ul>${li}</ul>`;
+
+        petShop.insertAdjacentHTML('beforebegin', tpl);
     }
-    renderAllPets () {
-
-    }
-
-
 }
