@@ -1,0 +1,26 @@
+.clock-calendar {
+    width: 500px;
+    height: 500px;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    margin-left: -250px;
+    top: 50%;
+    margin-top: -250px;
+    background-color: #ebebeb;
+    cursor: pointer;
+    box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);
+    transition: all 0.2s linear;
+    font-size: 80px;
+    color: #000;
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 2px;
+}
+.clock-calendar:hover {
+    background-color: #000;
+    color: #fff;
+}

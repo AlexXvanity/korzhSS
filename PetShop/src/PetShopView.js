@@ -6,7 +6,7 @@ class PetShopView {
 
         lis = generateLis(petsList);
 
-        petShop.innerHTML += generateTpl(lis, listTitle);
+        petShop.insertAdjacentHTML('beforeend',generateTpl(lis, listTitle));
 
         function generateTpl (lis, listTitle) {
             return `<div>
