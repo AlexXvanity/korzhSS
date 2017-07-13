@@ -1,7 +1,6 @@
 'use strict';
 
 class Clock {
-    constructor () {}
     getFullTime () {
         let currentDate = new Date(),
             hours = 0,

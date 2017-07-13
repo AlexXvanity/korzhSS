@@ -1,7 +1,6 @@
 'use strict';
 
 class Calendar {
-    constructor (){}
     getFullDate () {
         let currentDate = new Date(),
             day = 0,
@@ -29,7 +28,7 @@ class Calendar {
         year = this.addZero(currentDate.getFullYear());
 
         date = `${month}.${day}.${year}`;
-        date = date.slice(0, fullDate.indexOf('2017')) + fullDate.slice(-2);
+        date = date.slice(0, date.indexOf('2017')) + date.slice(-2);
 
         return date;
     }
