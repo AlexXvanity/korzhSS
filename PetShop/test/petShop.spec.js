@@ -29,4 +29,5 @@ describe('Pet Shop store', function () {
         let result = petShop.getFluffyOrWhite();
         expect(petShop.getFluffyOrWhite()).toEqual(result);
     });
+    
 });
