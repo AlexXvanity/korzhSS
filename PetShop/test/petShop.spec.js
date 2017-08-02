@@ -1,4 +1,5 @@
 describe('Pet Shop store', function () {
+    
     let petShop = new PetShop();
 
     petShop.addPet(new Dog('black', 100, 'Strelka'));
@@ -29,5 +30,4 @@ describe('Pet Shop store', function () {
         let result = petShop.getFluffyOrWhite();
         expect(petShop.getFluffyOrWhite()).toEqual(result);
     });
-    
 });
