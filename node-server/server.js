@@ -1,6 +1,7 @@
-var http = require('http'),
-    url = require('url'),
-    formidable = require('formidable');
+'use strict';
+
+let http = require('http'),
+    url = require('url');
 
 function start (route, handle) {
     function onRequest (request, response) {
@@ -10,7 +11,7 @@ function start (route, handle) {
         route(handle, pathname, response);
     }
 
-    http.createServer(onRequest).listen(8888);
+    http.createServer(onRequest).listen(8080);
     console.log('Server has started');
 }
 

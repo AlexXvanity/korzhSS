@@ -1,4 +1,6 @@
-var exec = require('child_process').exec,
+'use strict';
+
+let exec = require('child_process').exec,
     fs = require('fs');
 
 function start(response) {
@@ -31,6 +33,25 @@ function getDate (response) {
     response.end();
 }
 
+function uploadStatic (pathname, response) {
+    console.log('request handler "uploadStatic" was called');
+
+    console.log('??? .' + pathname);
+    fs.readFile('.' + pathname, "binary", function (error, file) {
+        if (error) {
+            response.writeHead(500, {"Content-Type": "text/plain"});
+            response.write(error + "\n");
+            response.end();
+        } else {
+            console.log('>>>' + pathname);
+
+            response.writeHead(200, {"Content-Type": 'text/html'});
+            response.write(file, "binary");
+            response.end();
+        }
+    });
+}
+
 function getIndex (response) {
     console.log('request handler "getIndex" was called');
 
@@ -50,3 +71,4 @@ function getIndex (response) {
 exports.getTime = getTime;
 exports.getDate = getDate;
 exports.getIndex = getIndex;
+exports.uploadStatic = uploadStatic;

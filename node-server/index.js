@@ -1,11 +1,13 @@
-var server = require('./server.js'),
+'use strict';
+
+let server = require('./server.js'),
     router = require('./router.js'),
     requestHandlers = require('./requestHandlers');
 
-var handle = {};
+let handle = {};
 handle['/'] = requestHandlers.start;
 handle['/time'] = requestHandlers.getTime;
 handle['/date'] = requestHandlers.getDate;
-handle['/index.html'] = requestHandlers.getIndex;
-
+handle['static'] = requestHandlers.uploadStatic;
+// handle['/index.html'] = requestHandlers.getIndex;
 server.start(router.route, handle);
