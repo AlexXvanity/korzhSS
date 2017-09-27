@@ -77,3 +77,9 @@ ul {
     color: #d66;
     content: "+";
 }
+.button {
+    width: 100px;
+    height: 50px;
+    font-size: 40px;
+    background-color: plum;
+}

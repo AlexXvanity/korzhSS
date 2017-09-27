@@ -23,6 +23,7 @@
     "jsxobj": "^1.1.0",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
+    "source-map-loader": "^0.2.1",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.8.2"
   }

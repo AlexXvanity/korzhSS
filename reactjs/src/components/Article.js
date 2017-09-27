@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button.js';
+import Button from './Button';
+import Event from './Event';
+import Ref from './Ref';
+import LifeCycle from './LifeCycle';
+import ArraysofData from './ArraysofData';
 
 class Article extends React.Component {
     constructor () {
@@ -21,7 +25,11 @@ class Article extends React.Component {
                 <Widget update = {this.update.bind(this)}/>
                 <Widget update = {this.update.bind(this)}/>
                 <h1>{this.state.text}</h1>
-                <Button>React</Button>            
+                <Button>React</Button> 
+                <Event/>
+                <Ref/>
+                <LifeCycle />
+                <ArraysofData/>           
             </div>
         );
     }
