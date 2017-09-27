@@ -9598,20 +9598,13 @@ var _reactDom = __webpack_require__(98);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _Article = __webpack_require__(184);
+
+var _Article2 = _interopRequireDefault(_Article);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Hello = function Hello(name) {
-  return _react2.default.createElement(
-    'div',
-    null,
-    'Hello, ',
-    name
-  );
-};
-
-var view = Hello("Will");
-
-_reactDom2.default.render(view, document.querySelector('#app'));
+_reactDom2.default.render(_react2.default.createElement(_Article2.default, null), document.getElementById('app'));
 
 /***/ }),
 /* 82 */
@@ -22085,6 +22078,272 @@ var ReactDOMInvalidARIAHook = {
 
 module.exports = ReactDOMInvalidARIAHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 184 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(82);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(185);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _Button = __webpack_require__(187);
+
+var _Button2 = _interopRequireDefault(_Button);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Article = function (_React$Component) {
+    _inherits(Article, _React$Component);
+
+    function Article() {
+        _classCallCheck(this, Article);
+
+        var _this = _possibleConstructorReturn(this, (Article.__proto__ || Object.getPrototypeOf(Article)).call(this));
+
+        _this.state = {
+            text: "default state text"
+        };
+        return _this;
+    }
+
+    _createClass(Article, [{
+        key: 'update',
+        value: function update(e) {
+            this.setState({ text: e.target.value });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(Widget, { update: this.update.bind(this) }),
+                _react2.default.createElement(Widget, { update: this.update.bind(this) }),
+                _react2.default.createElement(Widget, { update: this.update.bind(this) }),
+                _react2.default.createElement(
+                    'h1',
+                    null,
+                    this.state.text
+                ),
+                _react2.default.createElement(
+                    _Button2.default,
+                    null,
+                    'React'
+                )
+            );
+        }
+    }]);
+
+    return Article;
+}(_react2.default.Component);
+
+var Widget = function Widget(props) {
+    return _react2.default.createElement('input', { type: 'text', onChange: props.update });
+};
+
+Article.propTypes = {
+    text: _propTypes2.default.string
+};
+
+Article.defaultProps = {
+    text: 'this is the default text'
+};
+
+exports.default = Article;
+
+/***/ }),
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(92)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(186)();
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var emptyFunction = __webpack_require__(9);
+var invariant = __webpack_require__(1);
+var ReactPropTypesSecret = __webpack_require__(55);
+
+module.exports = function() {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret) {
+      // It is still safe when called from React.
+      return;
+    }
+    invariant(
+      false,
+      'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+      'Use PropTypes.checkPropTypes() to call them. ' +
+      'Read more at http://fb.me/use-check-prop-types'
+    );
+  };
+  shim.isRequired = shim;
+  function getShim() {
+    return shim;
+  };
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+  var ReactPropTypes = {
+    array: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim,
+    exact: getShim
+  };
+
+  ReactPropTypes.checkPropTypes = emptyFunction;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(82);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(185);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Button = function (_React$Component) {
+    _inherits(Button, _React$Component);
+
+    function Button() {
+        _classCallCheck(this, Button);
+
+        return _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).apply(this, arguments));
+    }
+
+    _createClass(Button, [{
+        key: 'render',
+        value: function render() {
+            console.log(this.props);
+            return _react2.default.createElement(
+                'button',
+                null,
+                _react2.default.createElement(Title, { text: 'React' })
+            );
+        }
+    }]);
+
+    return Button;
+}(_react2.default.Component);
+
+var Title = function Title(props) {
+    return _react2.default.createElement(
+        'h2',
+        null,
+        'Title: ',
+        props.text
+    );
+};
+
+Title.propTypes = {
+    // Propertie validation
+
+    text: function text(props, propName, componentName) {
+        if (!(propName in props)) {
+            return new Error('missing propName =  ' + propName);
+        }
+    }
+};
+
+exports.default = Button;
 
 /***/ })
 /******/ ]);
