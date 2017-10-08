@@ -12,6 +12,7 @@ class App extends Component {
 	}
 	render() {
 		console.log(connect);
+		console.log(this.props);
 		return (
 				<div>
 					<div>
