@@ -4,6 +4,6 @@ import App from './app.jsx'
 import './assets/styles/style.scss';
 
 render(
-	<App />,
+	<App title = "React todo" />,
 	document.querySelector('#root')
 )
