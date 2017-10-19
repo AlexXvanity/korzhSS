@@ -1,33 +1,57 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Button from './Button.jsx';
+import React from 'react';
 
-class Form extends Component {
-    constructor (props) {
+import Button from './Button';
+
+class Form extends React.Component {
+    constructor(props) {
         super(props);
+
+        this.state = {
+            title: ''
+        };
+
+        this.store = this.props.store;
+
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = {};
+        this.handleChange = this.handleChange.bind(this);
     }
-    handleSubmit (event) {
+
+    handleSubmit(event) {
         event.preventDefault();
-        let title = this.refs.title.value;
+
+        const title = this.state.title;
 
         if (title) {
             this.props.onAdd(title);
+            this.setState({ title: '' });
         }
     }
-    render () {
+
+    handleChange(event) {
+        const title = event.target.value;
+
+        this.setState({ title });
+    }
+
+    render() {
+        const disabled = !this.state.title;
+        
         return (
-            <form className="todo-add-form" onSubmit = {this.handleSubmit}>
-                <input type = "text" ref = "title" placeholder= "Что нужно сделать?"/>
-                <Button type = "submit">Добавить</Button>
+            <form className="todo-add-form" onSubmit={this.handleSubmit}>
+                <input
+                    type="text"
+                    value={this.state.title}
+                    placeholder="Что нужно сделать?"
+                    onChange={this.handleChange} />
+                    
+                <Button type="submit" disabled={disabled}>Добавить</Button>
             </form>
         );
     }
 }
 
 Form.propTypes = {
-    onAdd: PropTypes.func.isRequired
-}
+    onAdd: React.PropTypes.func.isRequired
+};
 
 export default Form;

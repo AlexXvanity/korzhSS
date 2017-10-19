@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class App extends Component {
+	constructor (props) {
+		super(props);
+		console.log(props);
+	}
 	addTrack () {
 		this.props.onAddTrack(this.trackInput.value);
 		this.trackInput.value = '';

@@ -1,22 +1,20 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Stats from './Stats.jsx';
+import React from 'react';
 
-class Header extends Component {
-	constructor (props) {
-		super(props);
-	}
-	render() {
-		return (
-            <header>
-				<Stats todos = {this.props.todos}/>
-				<h1>{this.props.title}</h1>
-			</header>
-		)
-	}
+import Stats from './stats';
+import Stopwatch from './stopwatch';
+
+function Header(props) {
+    return (
+        <header>
+            <Stats todos={props.todos} />
+            <h1>Redux Todo</h1>
+            <Stopwatch />
+        </header>
+    );
 }
 
 Header.propTypes = {
-    title: PropTypes.string.isRequired
+    todos: React.PropTypes.array.isRequired
 };
+
 export default Header;

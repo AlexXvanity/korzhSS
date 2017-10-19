@@ -1,32 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Stats extends Component {
-    constructor (props) {
-        super(props);
-        this.total = this.props.todos.length;
-        this.completed = this.props.todos.filter((todo) => todo.completed).length;
-        this.notCompleted = this.total - this.completed;
-    }
-    render () {
-        return (
-            <table>
-                <tbody>
-                    <tr>
-                        <th>Всего задач: </th>
-                        <td>{this.total}</td>
-                    </tr>
-                    <tr>
-                        <th>Выполнено:</th>
-                        <td>{this.completed}</td>
-                    </tr>
-                    <tr>
-                        <th>Осталось:</th>
-                        <td>{this.notCompleted}</td>
-                    </tr>
-                </tbody>
-            </table>
-        );
-    }
+function Stats(props) {
+    const total = props.todos.length;
+    const completed = props.todos.filter(todo => todo.completed).length;
+    const uncompleted = total - completed;
+
+    return (
+        <table className="stats">
+            <tbody>
+                <tr>
+                    <th>Всего задач:</th>
+                    <td>{total}</td>
+                </tr>
+                <tr>
+                    <th>Выполнено:</th>
+                    <td>{completed}</td>
+                </tr>
+                <tr>
+                    <th>Осталось:</th>
+                    <td>{uncompleted}</td>
+                </tr>
+            </tbody>
+        </table>
+    );
 }
+
+Stats.propTypes = {
+    todos: React.PropTypes.arrayOf(React.PropTypes.shape({
+        id: React.PropTypes.number.isRequired,
+        title: React.PropTypes.string.isRequired,
+        completed: React.PropTypes.bool.isRequired
+    })).isRequired
+};
 
 export default Stats;
