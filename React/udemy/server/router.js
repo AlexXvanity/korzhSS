@@ -7,8 +7,8 @@ const requireSignIn = passport.authenticate('local', {session: false});
 
 module.exports = function (app) {
     app.get('/', requireAuth, function (req, res) {
-        res.send({ hi: 'there' });x
+        res.send({ message: 'super secret code 123' });
     });
-    app.post('/sigin',requireSignIn, Auth.sigin);
+    app.post('/signin',requireSignIn, Auth.signin);
     app.post('/signup', Auth.signup);
 }

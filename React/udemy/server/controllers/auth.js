@@ -8,7 +8,7 @@ function tokenForUser (user) {
     // iat - issued at time 
     return jwt.encode({ sub:user.id, iat: timeStamp }, config.secret);
 }
-function sigin (req, res, next) {
+function signin (req, res, next) {
     //User has already head their email and password auth'd
     // We just need to give them a token
     res.send({token: tokenForUser(req.user)});
@@ -53,4 +53,4 @@ function signup (req, res, next) {
     // res.send({success: "true"});
 }
 exports.signup = signup;
-exports.sigin = sigin;
+exports.signin = signin;

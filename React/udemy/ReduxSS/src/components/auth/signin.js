@@ -30,7 +30,7 @@ class Signin extends Component {
         }
     }
     
-    render (){
+    render () {
         const { handleSubmit } = this.props;
         return (
             <Form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
@@ -38,12 +38,14 @@ class Signin extends Component {
                 <div className="form-group">
                     <label>Email:</label>
                     <Field name="email" 
-                        type="email" component={renderInput} />
+                           type="email" 
+                           component={renderInput} />
                 </div>
                 <div className="form-group">
                     <label>Password:</label>
                     <Field name="password" 
-                        type="password" component={renderInput} />
+                           type="password" 
+                           component={renderInput} />
                 </div>
                 {this.renderAlert()}
                 <button action="submit" className="btn btn-primary">Sign in</button>
@@ -52,14 +54,14 @@ class Signin extends Component {
     }
 }
 
-// function mapStateToProps(state) {
-//     return { 
-//         // form: state.form,
-//         errorMessage: state.auth.error
-//      };
-// }
+function mapStateToProps(state) {
+    return { 
+        // form: state.form,
+        errorMessage: state.auth.error
+     };
+}
 
 Signin = reduxForm({
  form: 'signin'
 })(Signin);
-export default connect(null, actions)(Signin);
+export default connect(mapStateToProps, actions)(Signin);

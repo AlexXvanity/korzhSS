@@ -14,19 +14,33 @@ class Header extends Component {
             return <button onClick = {() =>this.props.authenticate(true)}>Sign In</button>;
          }
      }
-  render() {
+     renderLiks () {
+         let link = '';
+         if (this.props.authenticated) {
+             // Show a link to sign out
+            link = <li className = "nav-item">
+                  <Link to="/signout" className = "nav-link">Sign Out</Link>
+             </li>
+         } else {
+             // Show a link to sign in or sign up
+             link = [
+                <li className = "nav-item" key = {1}>
+                    <Link to="/signin" className = "nav-link">Sign In</Link>
+                </li>, 
+                <li className = "nav-item" key = {2}>
+                    <Link to="/signup" className = "nav-link">Sign Up</Link>
+                </li>
+             ];
+         }
+
+         return link;
+     }
+  render () {
     return (
       <div className = "navbar navbar-light">
+        <Link to = "/" className = "navbar-brand">Redux Auth</Link>
           <ul className = "nav navbar-nav">
-              <li className= "nav-item">
-                  <Link to="/">Home</Link>
-              </li>
-              <li className= "nav-item">
-                <Link to="/resources">Resourses</Link>
-              </li>
-              <li className= "nav-item">
-                  {this.authButton()}
-              </li>
+              {this.renderLiks()}
           </ul>
       </div>
     );
@@ -35,7 +49,7 @@ class Header extends Component {
 
 function mapStateToProps (state) {
     return { 
-        authenticated: state.authenticated 
+        authenticated: state.auth.authenticated 
     }
 }
 
